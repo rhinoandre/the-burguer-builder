@@ -9,6 +9,11 @@ const burger = props => {
             return [...Array(props.ingredients[igKey])].map((_, i) => {
                 return <BurgerIngredient key={igKey + i} type={igKey} />
             });
+        // let burguerList = [];
+        // for (let i; i <= props.ingredients[igKey] ; i++ ){
+        //     burguerList.push(<BurgerIngredient key={igKey + i} type={igKey} />);
+        // }      
+        // return burguerList         
         })
         .reduce((arr,el) => {
             return arr.concat(el)
