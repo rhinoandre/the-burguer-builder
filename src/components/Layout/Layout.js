@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropType from 'prop-types';
 
 import Aux from '../../hoc/Auxi';
 import classes from './Layout.css';
@@ -33,6 +34,10 @@ class Layout extends Component {
             </Aux>
         )
     }
+};
+
+Layout.PropType = {
+    showSideDrawer: PropType.bool.isRequired
 };
 
 export default Layout;
