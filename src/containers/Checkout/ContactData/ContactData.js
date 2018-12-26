@@ -3,62 +3,98 @@ import React, { Component } from 'react';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import classes from './ContactData.css';
-import axios from '../../../aixos-orders'; 
+import axios from '../../../aixos-orders';
 import Input from '../../../components/UI/Input/Input';
 
 class ContactData extends Component {
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: ''
-        },
-        loading: false
+        loading: false,
+        orderForm: {
+            name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Name'
+                },
+                value: ''
+            },
+            street: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Street Name'
+                },
+                value: ''
+            },
+            zipCode: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'ZIP CODE '
+                },
+                value: ''
+            },
+            country: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Country'
+                },
+                value: ''
+            },
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Your E-Mail'
+                },
+                value: ''
+            },
+            deliveryMethod: {
+                elementType: 'select',
+                elementConfig: {
+                    options: [
+                        { value: 'fastes', displayValue: 'Fastest' },
+                        { value: 'cheapest', displayValue: 'Cheapest' }
+                    ]
+                },
+                value: ''
+            }
+        }
     }
 
     orderHandler = event => {
         event.preventDefault(); //prevents page from Relaod
-        this.setState({loading: true});
+        this.setState({ loading: true });
         const order = {
             ingredients: this.props.ingredients,
-            price: this.props.price,
-            customer: {
-                name: 'Max',
-                address: {
-                    street: 'Some Street 123',
-                    zipCode: 'Happy-9837',
-                    contry: 'Lalaland'
-                },
-                email: 'max_fiction@example.com'
-            },
-            deliveryMethod: 'fastest'
+            price: this.props.price
         }
         axios.post('/orders.json', order)
-            .then( response => {
-                this.setState({loading: false});
+            .then(response => {
+                this.setState({ loading: false });
                 this.props.history.push('/');
             })
             .catch(error => {
-                this.setState({loading: false});
+                this.setState({ loading: false });
             });
     }
 
-    render () {
+    render() {
         let form = (
             <form>
-                <Input inputtype="input" type='text' name='name' placeholder='Insert Your Name'/>
-                <Input inputtype="input" type='email' name='email' placeholder='Insert Your Email'/>
-                <Input inputtype="input" type='text' name='postal' placeholder='Insert Your Postal Code'/>
-                <Input inputtype="input" type='text' name='street' placeholder='Insert Your Street Name'/>
-                <Button 
+                <Input elementType='...' elementConfig='...' value='...' />
+                <Input inputype="input" type='email' name='email' placeholder='Insert Your Email' />
+                <Input inputype="input" type='text' name='postal' placeholder='Insert Your Postal Code' />
+                <Input inputype="input" type='text' name='street' placeholder='Insert Your Street Name' />
+                <Button
                     btnType='Success'
                     clicked={this.orderHandler}>ORDER</Button>
             </form>
         );
 
         if (this.state.loading) {
-            form = < Spinner  />
+            form = < Spinner />
         }
         return (
             <div className={classes.ContactData}>
@@ -66,7 +102,7 @@ class ContactData extends Component {
                 {form}
             </div>
         );
-    }
+    };
 }
 
 export default ContactData;
