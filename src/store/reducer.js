@@ -5,3 +5,8 @@ const initialState = {
     totalPrice: 4,
 };
 
+const reducer = (state = initialState, actions) => {
+
+};
+
+export default reducer;
