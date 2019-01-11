@@ -12,7 +12,6 @@ import * as actions from '../../../store/actions/index';
 class ContactData extends Component {
     state = {
         formIsValid: false,
-        loading: false,
         orderForm: {
             name: {
                 elementType: 'input',
@@ -178,7 +177,7 @@ class ContactData extends Component {
             </form>
         );
 
-        if (this.state.loading) {
+        if (this.props.loading) {
             form = < Spinner />
         }
         return (
@@ -193,12 +192,15 @@ class ContactData extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.ingredients,
-        price: state.totalPrice
+        price: state.totalPrice,
+        loading: state.loading
     }
 };
 
 const mapDispatchToProps = dispatch => {
-    onOrderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData));
+    return {
+        onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));
