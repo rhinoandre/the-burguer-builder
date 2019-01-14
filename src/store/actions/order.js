@@ -36,6 +36,12 @@ export const purchaseBurger = orderData => {
     };
 };
 
+export const purchaseInit = () => {
+    return {
+        type: actionType.PURCHASE_INIT
+    };
+}
+
 export const fetchOrdersSuccess = orders => {
     return {
         type: actionType.FETCH_ORDERS_SUCCESS,
