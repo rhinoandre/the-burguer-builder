@@ -165,7 +165,6 @@ class ContactData extends Component {
                         key={formElement.id}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
-                        value={formElement.config.value}
                         invalid={!formElement.config.valid}
                         touched={formElement.config.touched}
                         shouldValidate={formElement.config.validation}
@@ -173,7 +172,6 @@ class ContactData extends Component {
                 ))}
                 <Button
                     btnType='Success'
-                    clicked={this.orderHandler}
                     disabled={!this.state.formIsValid}>ORDER</Button>
             </form>
         }
