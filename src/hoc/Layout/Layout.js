@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropType from 'prop-types';
 
 import Aux from '../Auxi/Auxi';
@@ -24,8 +25,11 @@ class Layout extends Component {
     render () {
         return (
             <Aux>
-                <Toolbar drawerToggleClicked={this.SideDrawerToggleHandler}/>
+                <Toolbar 
+                    isAuth={this.props.isAuthenticated}
+                    drawerToggleClicked={this.SideDrawerToggleHandler}/>
                 <SideDrawer
+                    isAuth={this.props.isAuthenticated}
                     open={this.state.showSideDrawer}
                     closed={this.SideDrawerClosedHandler}/>
                 <main className={classes.Content}>
@@ -40,4 +44,10 @@ Layout.PropType = {
     showSideDrawer: PropType.bool.isRequired
 };
 
-export default Layout;
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null
+    };
+};
+
+export default connect(mapStateToProps)(Layout);
