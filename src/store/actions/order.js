@@ -22,16 +22,16 @@ export const purchaseBurgerStart = () => {
     };
 };
 
-export const purchaseBurger = orderData => {
+export const purchaseBurger = (orderData, token) => {
     return dispatch => {
         dispatch(purchaseBurgerStart());
-        axios.post('/orders.json', orderData)
+        axios.post('/orders.json?auth=' + token, orderData)
             .then(response => {
                 console.log(response.data);
-                dispatch( purchaseBurgerSuccess(response.data.name, orderData) );
+                dispatch(purchaseBurgerSuccess(response.data.name, orderData));
             })
             .catch(error => {
-                dispatch( purchaseBurgerFail(error) );
+                dispatch(purchaseBurgerFail(error));
             });
     };
 };
@@ -62,13 +62,13 @@ export const fetchOrdersStart = () => {
     }
 };
 
-export const fetchOrder = () => {
+export const fetchOrder = (token) => {
     return dispatch => {
         dispatch(fetchOrdersStart());
-        axios.get('/orders.json')
+        axios.get('/orders.json?auth=' + token)
             .then(res => {
                 const fetchedOrders = [];
-                for ( let key in res.data) {
+                for (let key in res.data) {
                     fetchedOrders.push({
                         ...res.data[key],
                         id: key
@@ -76,8 +76,8 @@ export const fetchOrder = () => {
                 }
                 dispatch(fetchOrdersSuccess(fetchedOrders));
             })
-        .catch(error => {
-            dispatch(fetchOrdersFail(error));
-        });
+            .catch(error => {
+                dispatch(fetchOrdersFail(error));
+            });
     }
 }
