@@ -132,6 +132,8 @@ class Auth extends Component {
         }
         return (
             <div className={classes.Auth}>
+                <h3>Email: admin@admin.com</h3>
+                <h3>Password: admin123</h3>
                 {authRedirect}
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>
