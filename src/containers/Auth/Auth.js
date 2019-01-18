@@ -67,7 +67,6 @@ class Auth extends Component {
             this.state.controls.email.value,
             this.state.controls.password.value,
             this.state.isSignup);
-        console.log(this.state.controls.email.value, this.state.controls.password.value);
     }
 
     switchAuthModeHandler = () => {
