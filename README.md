@@ -4,7 +4,7 @@ In this application, there is a sign up/sign in authentication to register users
 
 ## What I learned
 
-Through this project, I learned ** Advanced React and Redux**. Nonetheless, I also earned experience in working with different files structures, **Firebase** and ** Enzyme **.
+Through this project, I learned **Advanced React and Redux**. Nonetheless, I also earned experience in working with different files structures, **Firebase** and **Enzyme**.
 
 # Technologies used:
   - Javascript
