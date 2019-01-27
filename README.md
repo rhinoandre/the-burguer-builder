@@ -1,6 +1,6 @@
 ## Description
 
-In this application there is a sign up/sign in authentication to register users. The users can build their own burgers and order it from a fictional store. Besides, they can also see their orders.
+In this application, there is a sign up/sign in authentication to register users. The users can build their own burgers and order it from a fictional store. Besides, they can also see their orders.
 
 ## What I learned
 
