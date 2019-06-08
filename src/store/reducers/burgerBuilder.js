@@ -55,7 +55,7 @@ const fetchIngredientsFailed = (state, action) => {
     return updateObject(state, { error: true });
 }
 
-const reducer = (state = initialState, action) => {
+export const burgerBuilder = (state = initialState, action) => {
     switch (action.type) {
         case actionType.ADD_INGREDIENT: return addIngredient(state, action);
         case actionType.REMOVE_INGREDIENT: return removeIngredient(state, action);
@@ -64,5 +64,3 @@ const reducer = (state = initialState, action) => {
         default: return state;
     }
 };
-
-export default reducer;
