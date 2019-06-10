@@ -1,4 +1,4 @@
-import * as actionType from '../actions/actionaTypes';
+import * as actionType from '../actions/actionsTypes';
 import { updateObject } from '../../shared/utility';
 
 const initialState = {
@@ -49,17 +49,18 @@ const setIngridients = (state, action) => {
         error: false,
         building: false
     });
-}
+};
 
 const fetchIngredientsFailed = (state, action) => {
+    console.log({action})
     return updateObject(state, { error: true });
-}
+};
 
 export const burgerBuilder = (state = initialState, action) => {
     switch (action.type) {
         case actionType.ADD_INGREDIENT: return addIngredient(state, action);
         case actionType.REMOVE_INGREDIENT: return removeIngredient(state, action);
-        case actionType.SET_INGREDIENTS: return setIngridients(state, action);      
+        case actionType.SET_INGREDIENTS: return setIngridients(state, action);
         case actionType.FETCH_INGREDIENTS_FAILED: return fetchIngredientsFailed(state, action);
         default: return state;
     }

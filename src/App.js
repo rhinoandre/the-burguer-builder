@@ -9,17 +9,9 @@ import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Logout from './containers/Auth/Logout/Logout';
 import * as actions from './store/actions/index';
 
-const asyncCheckOut = asyncComponent(() => {
-  return import('./containers/Checkout/Checkout');
-});
-
-const asyncAuth = asyncComponent(() => {
-  return import('./containers/Auth/Auth');
-});
-
-const asyncOrders = asyncComponent(() => {
-  return import('./containers/Orders/Orders');
-});
+const asyncCheckOut = asyncComponent(() => import('./containers/Checkout/Checkout'));
+const asyncAuth = asyncComponent(() => import('./containers/Auth/Auth'));
+const asyncOrders = asyncComponent(() => import('./containers/Orders/Orders'));
 
 class App extends Component {
   componentDidMount() {
