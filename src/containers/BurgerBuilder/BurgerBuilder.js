@@ -10,6 +10,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as burgerBuilderActions from '../../store/actions/index';
 import axios from '../../aixos-orders';
+import { FETCH_INGREDIENTS } from '../../store/actions/actionsTypes';
 
 export class BurgerBuilder extends Component {
     state = {
@@ -103,7 +104,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onIngredientAdded: ingName => dispatch(burgerBuilderActions.addIngredient(ingName)),
         onIngredientRemoved: ingName => dispatch(burgerBuilderActions.removeIngredient(ingName)),
-        onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
+        // I didn't use an action creator on purpose, so you can see that you just need to dispatch an action
+        onInitIngredients: () => dispatch({type: FETCH_INGREDIENTS}),
         onInitPurchase: () => dispatch(burgerBuilderActions.purchaseInit()),
         onSetAuthRedirectPath: path => dispatch(burgerBuilderActions.setAuthRedirectPath(path))
     }
